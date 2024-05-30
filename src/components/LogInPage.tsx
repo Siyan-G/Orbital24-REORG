@@ -1,17 +1,20 @@
 import React from 'react';
 import REORGLogo from '../assets/REORGLogo.svg';
 import '../styles/LogInPage.css';
+import { Link } from 'react-router-dom';
 
 const LogInPage : React.FC = () => {
-    const container = document.getElementById("container");
+    let container = document.getElementById("container");
 
     function toggleLeft() : void {
+        container = document.getElementById("container");
         if (container) {
             container.classList.remove('active');
         }
     }
 
     function toggleRight() {
+        container = document.getElementById("container");
         if (container) {
             container.classList.add('active');
         }
@@ -52,7 +55,7 @@ const LogInPage : React.FC = () => {
                         <span>or use your email and password</span>
                         <input type="email" placeholder="Email"/>
                         <input type="password" placeholder="Password"/>
-                        <a href="#">Forget Your Password?</a>
+                        <Link to="/forget">Forget Your Password?</Link>
                         <button>Sign In</button>
                     </form>
                 </div>
