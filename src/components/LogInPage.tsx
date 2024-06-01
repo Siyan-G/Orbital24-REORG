@@ -2,28 +2,33 @@ import React, { useState, ChangeEvent } from 'react';
 import REORGLogo from '../assets/REORGLogo.svg';
 import '../styles/LogInPage.css';
 import { Link } from 'react-router-dom';
+import { SERVER_URL } from '../constants';
 
 const LogInPage : React.FC = () => {
-    const [inputUsername, setInputUsername] = useState("")
-    const [inputEmail, setInputEmail] = useState("");
-    const [inputPassword, setInputPassword] = useState("");
+    //user default
+    const [alias, setAlias] = useState("");
+    const [colourPalette, setColourPalette] = useState("NORMAL");
+    const [dateFormat, setDateFormat] = useState("standard");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     let container = document.getElementById("container");
 
     const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) =>
-      setInputUsername(event.target.value);
+      setUsername(event.target.value);
 
     const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) =>
-      setInputEmail(event.target.value);
+      setEmail(event.target.value);
 
     const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) =>
-      setInputPassword(event.target.value);
+      setPassword(event.target.value);
 
     function toggleLeft() : void {
         container = document.getElementById("container");
         if (container) {
-            setInputUsername("");
-            setInputEmail("");
-            setInputPassword("");
+            setUsername("");
+            setEmail("");
+            setPassword("");
             container.classList.remove('active');
         }
     }
@@ -31,11 +36,35 @@ const LogInPage : React.FC = () => {
     function toggleRight() {
         container = document.getElementById("container");
         if (container) {
-            setInputUsername("");
-            setInputEmail("");
-            setInputPassword("");
+            setUsername("");
+            setEmail("");
+            setPassword("");
             container.classList.add('active');
         }
+    }
+
+    function signUp() : void {
+      setAlias(username);
+      const newUser = {
+        alias,
+        email,
+        password,
+        colourPalette,
+        dateFormat,
+        username
+      };
+        fetch(SERVER_URL, 
+          {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newUser) 
+          }
+        )
+        console.log(JSON.stringify(newUser));
+    }
+
+    function signIn() : void {
+
     }
 
     return (
@@ -62,23 +91,23 @@ const LogInPage : React.FC = () => {
               <span>or use your email for registration</span>
               <input
                 type="text"
-                value={inputUsername}
+                value={username}
                 onChange={handleUsernameChange}
                 placeholder="Username"
               />
               <input
                 type="email"
-                value={inputEmail}
+                value={email}
                 onChange={handleEmailChange}
                 placeholder="Email"
               />
               <input
                 type="password"
-                value={inputPassword}
+                value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
               />
-              <button>Sign Up</button>
+              <button onClick={signUp}>Sign Up</button>
             </form>
           </div>
 
@@ -103,18 +132,18 @@ const LogInPage : React.FC = () => {
               <span>or use your email and password</span>
               <input
                 type="text"
-                value={inputUsername}
+                value={username}
                 onChange={handleUsernameChange}
                 placeholder="Username"
               />
               <input
                 type="password"
-                value={inputPassword}
+                value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
               />
               <Link to="/forget">Forget Your Password?</Link>
-              <button>Sign In</button>
+              <button onClick={signIn}>Sign In</button>
             </form>
           </div>
 

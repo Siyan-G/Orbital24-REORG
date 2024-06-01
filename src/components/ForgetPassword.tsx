@@ -2,17 +2,41 @@ import React, { useState, ChangeEvent } from "react";
 import REORGLogo from "../assets/REORGLogo.svg";
 import { Link } from "react-router-dom";
 import "../styles/ForgetPassword.css";
+import { SERVER_URL } from "../constants";
 
 const ForgetPassword: React.FC = () => {
-  const [inputUsername, setInputUsername] = useState("")
-  const [inputEmail, setInputEmail] = useState("")
+  const [username, setInputUsername] = useState("")
+  const [email, setInputEmail] = useState("")
   const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) =>
     setInputUsername(event.target.value);
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) =>
     setInputEmail(event.target.value);
-  function handleSubmit(): void {}
-
+  
+  function handleSubmit(): void {
+    fetch("http://localhost:8080/api/user/email/gsy7418@gmail.com", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify("username")
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
+  }
 
   return (
     <div className="forget-container" id="forget-container">
@@ -21,13 +45,13 @@ const ForgetPassword: React.FC = () => {
       <form>
         <input
           type={"text"}
-          value={inputUsername}
+          value={username}
           onChange={handleUsernameChange}
           placeholder={"Username"}
         />
         <input
           type={"email"}
-          value={inputEmail}
+          value={email}
           onChange={handleEmailChange}
           placeholder={"Email"}
         />
