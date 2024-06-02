@@ -12,13 +12,13 @@ const Sidebar: React.FC = () => {
           <ListItem button component={Link} to="/">
             <ListItemText primary="Calendar" />
           </ListItem>
-          <ListItem button component={Link} to="/courseplanning">
+          <ListItem button component={Link} to="/main/courseplanning">
             <ListItemText primary="Course Planning" />
           </ListItem>
-          <ListItem button component={Link} to="/modules">
+          <ListItem button component={Link} to="/main/modules">
             <ListItemText primary="Modules" />
           </ListItem>
-          <ListItem button component={Link} to="/usersettings">
+          <ListItem button component={Link} to="/main/usersettings">
             <ListItemText primary="User Settings" />
           </ListItem>
         </List>

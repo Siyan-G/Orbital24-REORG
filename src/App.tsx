@@ -11,13 +11,13 @@ import Modules from './components/dashboard/pages/Modules';
 const App: React.FC = () => {
   return (
     <Routes>
-      <Route path={"/login"} element={<LogInPage />} />
+      <Route path={"/"} element={<LogInPage />} />
       <Route path={"/forget"} element={<ForgetPassword />} />
-      <Route path="/" element={<Layout />}>
+      <Route path="/main" element={<Layout />}>
         <Route index element={<Calendar />} />
-        <Route path="/courseplanning" element={<CoursePlanning />} />
-        <Route path="/modules" element={<Modules />} />
-        <Route path="/usersettings" element={<UserSettings />} />
+        <Route path="/main/courseplanning" element={<CoursePlanning />} />
+        <Route path="/main/modules" element={<Modules />} />
+        <Route path="/main/usersettings" element={<UserSettings />} />
       </Route>
     </Routes>
   );
