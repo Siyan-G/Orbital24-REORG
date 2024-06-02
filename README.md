@@ -1,4 +1,5 @@
-# Orbital24-REORG
+# NUS Orbital 2024 REORG
+# Milestone One
 
 ## Abstract:
 This document is a continuation of our proposal, providing additional details and expanding on the ideas outlined previously. It also covers different aspect of our development process such as our design logic, development plan, wireframes. However, the features stated are subjected to changes due to various limitations and challenges we are facing. Thank you for taking the time to read this document. .We welcome any feedback to improve the project further. 
@@ -67,3 +68,7 @@ The database contains several interrelated tables which is shown the ERD below:
 
 ## Project Log: 
 [Orbital24-6127-REORG](https://docs.google.com/spreadsheets/d/17JS7bcnGZdaE_93xDu4N9nRWD4szjpai-7lixYyifF0/edit?usp=sharing) 
+
+## Team REORG
+Guo Siyan (e1121718)
+Thaddeus Lim Yu Han (e1300478)
