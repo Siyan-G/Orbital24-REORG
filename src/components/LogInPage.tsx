@@ -51,7 +51,7 @@ const LogInPage : React.FC = () => {
         alias,
         email,
         password,
-        colourPalette,
+        // colourPalette,
         dateFormat,
         username
       };
@@ -86,8 +86,10 @@ const LogInPage : React.FC = () => {
       }
 
       const data = await response.json();
-      const name = data.username;
-      console.log(name);
+      console.log('Response Data:', data);
+
+      const name = data[0].username;
+      console.log('Username:', name);
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
@@ -95,10 +97,11 @@ const LogInPage : React.FC = () => {
       );
       console.log(error);
     }
+    
     }
 
     return (
-      <body>
+      <div>
         <div className="container" id="container">
           <div className="form-container sign-up">
             <form>
@@ -201,7 +204,7 @@ const LogInPage : React.FC = () => {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     );
 };
 
