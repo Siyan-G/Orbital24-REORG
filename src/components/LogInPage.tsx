@@ -1,10 +1,12 @@
 import React, { useState, ChangeEvent } from 'react';
 import REORGLogo from '../assets/REORGLogo.svg';
 import '../styles/LogInPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SERVER_URL } from '../constants';
 import { METHODS } from 'http';
 import { promises } from 'dns';
+import { Navigate } from 'react-router-dom';
+
 
 const LogInPage : React.FC = () => {
     //user default
@@ -15,6 +17,11 @@ const LogInPage : React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let container = document.getElementById("container");
+
+    //init of Navigator used after validation of username and password
+    // ==================================
+    const navigate = useNavigate();
+    // ==================================
 
     const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) =>
       setUsername(event.target.value);
@@ -84,12 +91,22 @@ const LogInPage : React.FC = () => {
         if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
+      // new code here to check username and password then navigate to home page
+      // =================================
       const data = await response.json();
       console.log('Response Data:', data);
 
       const name = data[0].username;
       console.log('Username:', name);
+
+      const pass = data[0].password;
+      console.log('Password:', pass);
+
+      if (username == name && password == pass){
+        console.log('Validated User & Password');
+        navigate("/main");
+      //==================================
+      }
     } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",

@@ -5,7 +5,7 @@ import REORGLogo from "../../assets/REORGLogo.svg"
 
 const Sidebar: React.FC = () => {
   return (
-    <Drawer variant="permanent" anchor="left">
+    <Drawer variant="permanent" anchor="left" sx={{width:100}}>
       <Box width={250}>
         <List>
           <img className="logo" src={REORGLogo} alt="REORG Icon" />
