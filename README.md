@@ -3,9 +3,9 @@
 ## Abstract:
 This document is a continuation of our proposal, providing additional details and expanding on the ideas outlined previously. It also covers different aspect of our development process such as our design logic, development plan, wireframes. However, the features stated are subjected to changes due to various limitations and challenges we are facing. Thank you for taking the time to read this document. .We welcome any feedback to improve the project further. 
 
-## Poster:  
+## Poster:  [6127 old](https://drive.google.com/file/d/1zEWmHkPVx57lEVh15IAXGEJeTyEnSODe/view?usp=drive_link)
 
-## Video: 
+## Video: [6127 old](https://drive.google.com/file/d/1mqy_DZcoCE6Ptd260bO7FIcSSISqq4aA/view?usp=drive_link)
 
 ## Proposed Level of Achievement: Apollo
 
@@ -38,7 +38,7 @@ We use Java Spring Boot to build our REST API. A layered architecture is followe
 Below showcase the relevant controllers (subject to changes) needed for our project: 
 ![api controllers](./readme_assets/api_controllers.png)
 
-##Entity Relationship Diagram (ERD) (subject to changes)
+## Entity Relationship Diagram (ERD) (subject to changes)
 REORG uses a relational database to manage the data needed for operations such as user authentication, storage of user course profile, journal entries as well as module details. By using a relational database, we can ensure data integrity and support complex query needed for the wed app. 
 The database contains several interrelated tables which is shown the ERD below: 
 ![erd](./readme_assets/erd.png)
