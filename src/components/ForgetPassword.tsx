@@ -1,15 +1,13 @@
 import React, { useState, ChangeEvent } from "react";
 import REORGLogo from "../assets/REORGLogo.svg";
-import { Link } from "react-router-dom";
 import "../styles/ForgetPassword.css";
 import { SERVER_URL } from "../constants";
-import { METHODS } from "http";
-import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 const ForgetPassword: React.FC = () => {
-  const [username, setInputUsername] = useState("");
-  const [email, setInputEmail] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+  const [username, setInputUsername] = useState<string>("");
+  const [email, setInputEmail] = useState<string>("");
+  const [newPassword, setNewPassword] = useState<string>("");
   
   const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) =>
     setInputUsername(event.target.value);
@@ -20,31 +18,30 @@ const ForgetPassword: React.FC = () => {
   const handleNewPasswordChange = (event : ChangeEvent<HTMLInputElement>) => 
     setNewPassword(event.target.value);
   
-  function handleSubmit(): void {
-    fetch(`${SERVER_URL}?email=${encodeURIComponent(email)}`, 
-      {
+  async function handleSubmit(e: React.FormEvent): Promise<void> {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(SERVER_URL + "/" + email, {
         method: "GET",
         headers: {
-        "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error
-          );
-        });
+      });
 
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
+      const data = await response.json();
+      const name = data.username;
+      console.log(name);
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    }
   }
 
   function handleReset() : void {
@@ -69,7 +66,7 @@ const ForgetPassword: React.FC = () => {
               onChange={handleEmailChange}
               placeholder={"Email"}
             />
-            <button className="submit" onSubmit={handleSubmit}>
+            <button className="submit" onClick={handleSubmit}>
               Submit
             </button>
           </form>
@@ -88,7 +85,7 @@ const ForgetPassword: React.FC = () => {
               onChange={handleNewPasswordChange}
               placeholder={"New Password"}
             />
-            <button className="submit" onSubmit={handleReset}>
+            <button className="submit" onClick={handleReset}>
               Submit
             </button>
           </form>

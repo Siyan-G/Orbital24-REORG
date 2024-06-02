@@ -3,6 +3,8 @@ import REORGLogo from '../assets/REORGLogo.svg';
 import '../styles/LogInPage.css';
 import { Link } from 'react-router-dom';
 import { SERVER_URL } from '../constants';
+import { METHODS } from 'http';
+import { promises } from 'dns';
 
 const LogInPage : React.FC = () => {
     //user default
@@ -63,8 +65,36 @@ const LogInPage : React.FC = () => {
         console.log(JSON.stringify(newUser));
     }
 
-    function signIn() : void {
+    async function signIn(e: React.FormEvent) : Promise<void> {
+      e.preventDefault();
+      try {
+        console.log(
+          `${SERVER_URL}/userByUsernameAndPassword?username=${username}&password=${password}`
+        );
+        const response = await fetch(
+          `${SERVER_URL}/userByUsernameAndPassword?username=${username}&password=${password}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
+        if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      const name = data.username;
+      console.log(name);
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+      console.log(error);
+    }
     }
 
     return (
