@@ -66,4 +66,4 @@ The database contains several interrelated tables which is shown the ERD below:
 •	MySQL (relational database)
 
 ## Project Log: 
-Please refer to: Orbital24-6127-REORG 
+[Orbital24-6127-REORG](https://docs.google.com/spreadsheets/d/17JS7bcnGZdaE_93xDu4N9nRWD4szjpai-7lixYyifF0/edit?usp=sharing) 
