@@ -9,7 +9,7 @@ const Sidebar: React.FC = () => {
       <Box width={250}>
         <List>
           <img className="logo" src={REORGLogo} alt="REORG Icon" />
-          <ListItem button component={Link} to="/">
+          <ListItem button component={Link} to="/main">
             <ListItemText primary="Calendar" />
           </ListItem>
           <ListItem button component={Link} to="/main/courseplanning">
