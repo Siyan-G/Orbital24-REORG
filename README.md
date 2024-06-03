@@ -36,6 +36,9 @@ REORG will be a powerful tool for NUS students to view and manage their academic
 
 ## API Design
 We use Java Spring Boot to build our REST API. A layered architecture is followed where we organise the application into 4 different layers: controller, services, repository and entities. This ensures modularity as each layer has a specific responsibility and easier to maintain. 
+
+![api design](./readme_assets/api_design.jpg)
+
 Below showcase the relevant controllers (subject to changes) needed for our project: 
 ![api controllers](./readme_assets/api_controllers.png)
 
