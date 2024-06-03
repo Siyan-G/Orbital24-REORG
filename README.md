@@ -4,7 +4,7 @@
 ## Abstract:
 This document is a continuation of our proposal, providing additional details and expanding on the ideas outlined previously. It also covers different aspect of our development process such as our design logic, development plan, wireframes. However, the features stated are subjected to changes due to various limitations and challenges we are facing. Thank you for taking the time to read this document. .We welcome any feedback to improve the project further. 
 
-## Poster:  [6127 old](https://drive.google.com/file/d/1zEWmHkPVx57lEVh15IAXGEJeTyEnSODe/view?usp=drive_link)
+## Poster:  [6127](https://drive.google.com/file/d/1cW1bJHFxbf0X3fpYeRbI5z71y_Lfm2yY/view?usp=drive_link)
 
 ## Video: [6127 old](https://drive.google.com/file/d/1mqy_DZcoCE6Ptd260bO7FIcSSISqq4aA/view?usp=drive_link)
 
