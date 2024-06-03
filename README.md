@@ -52,6 +52,9 @@ The database contains several interrelated tables which is shown the ERD below:
 ![wireframe2](./readme_assets/wireframe2.png)
 
 ## User Interface Design (Still in progress)
+### Site Map
+![site map](./readme_assets//Sitemap.jpg)
+
 ### Sign In Page
 ![signin_page](./readme_assets/signin_page.png)
 
