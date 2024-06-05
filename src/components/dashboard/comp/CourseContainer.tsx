@@ -6,6 +6,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { red } from "@mui/material/colors";
 import { CourseDetails } from "../../../ReactQuery/objects";
+import { Padding } from "@mui/icons-material";
 
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -47,8 +48,10 @@ interface ExpandMoreProps extends IconButtonProps {
         flex={1}
         minWidth={0}
         maxWidth={'100%'}
-        maxHeight={'100%'}>
-      <Card>
+        maxHeight={'100%'}
+        p={1}
+        >
+      <Card sx={{boxShadow:5}}>
         <CardHeader
           action={
             <Box>

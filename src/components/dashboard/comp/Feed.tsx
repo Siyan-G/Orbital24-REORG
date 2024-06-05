@@ -31,12 +31,11 @@ const Feed = () => {
   ));
 
   return (
-    <Box flex={6} p={2} 
+    <Box flex={4} p={2} 
       justifyContent={'center'}
       display={'flex'}
       flexDirection={'column'}
-      maxWidth={'80%'}
-      maxHeight={'80%'}>
+      >
       {renderedContent}
       {Course.isFetchingNextPage && <h3> loading ...</h3>}
     </Box>

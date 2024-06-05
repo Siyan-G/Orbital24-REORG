@@ -7,23 +7,21 @@ import Topbar from "../Topbar";
 
 const DashBoard: React.FC = () => {
   return (
-    <Box>
-      <Grid container spacing={2} direction={'column'}>
-        <Grid item xs={2}>
+    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+        
           <Topbar />
-        </Grid>
-        <Grid item xs={6}>
+          
+          <Box sx={{ flex: 1, display: 'flex'}}>
         <Stack 
           direction={'row'}  
-          spacing={1} 
+          spacing={1}
           justifyContent={'space-between'}
-          sx={{ width: '100%', margin: 0 }}
+          sx={{ width: '100%', height: '100%' }}
           >
           <Sidebar/>
           <Feed/>
         </Stack>
-        </Grid>
-        </Grid> 
+        </Box>  
     </Box>
     
   );
