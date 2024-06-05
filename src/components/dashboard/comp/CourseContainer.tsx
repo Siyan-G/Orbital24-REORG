@@ -41,10 +41,15 @@ interface ExpandMoreProps extends IconButtonProps {
     };
   
     return (
-      <Box key={course.moduleCode} ref={innerRef}>
-      <Card >
+      <Box 
+        key={course.moduleCode} 
+        ref={innerRef} 
+        flex={1}
+        minWidth={0}
+        maxWidth={'100%'}
+        maxHeight={'100%'}>
+      <Card>
         <CardHeader
-        
           action={
             <Box>
             <IconButton aria-label="settings" onClick={handleClick}>

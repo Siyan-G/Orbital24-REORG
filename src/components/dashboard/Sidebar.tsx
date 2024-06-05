@@ -5,10 +5,8 @@ import REORGLogo from "../../assets/REORGLogo.svg"
 
 const Sidebar: React.FC = () => {
   return (
-    <Drawer variant="permanent" anchor="left" sx={{width:100}}>
-      <Box width={250}>
-        <List>
-          <img className="logo" src={REORGLogo} alt="REORG Icon" />
+      <Box flex={1} p={2} sx={{minWidth: '200px', maxWidth: '250px' }}>
+        <List style={{position:'fixed'}}>
           <ListItem button component={Link} to="/main">
             <ListItemText primary="Calendar" />
           </ListItem>
@@ -23,7 +21,6 @@ const Sidebar: React.FC = () => {
           </ListItem>
         </List>
       </Box>
-    </Drawer>
   );
 };
 

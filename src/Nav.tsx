@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import Dashboard from './components/dashboard/pages/Dashboard'
 import ForgetPassword from './components/ForgetPassword'
 import LogInPage from './components/LogInPage'
-import Layout from './components/dashboard/pages/Dashboard'
 import Calendar from './components/dashboard/pages/Calendar'
 import CoursePlanning from './components/dashboard/pages/CoursePlanning'
 import Modules from './components/dashboard/pages/Modules'
@@ -15,7 +14,7 @@ import UserSettings from './components/dashboard/pages/UserSetting'
     <Routes>
         <Route path={"/"} element={<LogInPage />} />
         <Route path={"/forget"} element={<ForgetPassword />} />
-        <Route path="/main" element={<Layout />} />
+        <Route path="/main" element={<Dashboard />} />
         {/* <Route index element={<Calendar />} /> */}
         <Route path="/main/courseplanning" element={<CoursePlanning />} />
         <Route path="/main/modules" element={<Modules />} />

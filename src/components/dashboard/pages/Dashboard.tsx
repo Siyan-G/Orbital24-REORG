@@ -1,34 +1,32 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import { Box, Grid, Stack } from "@mui/material";
 import Sidebar from "../Sidebar";
-import Header from "../Header";
 import Feed from "../comp/Feed";
+import Topbar from "../Topbar";
 
 
-const Layout: React.FC = () => {
+const DashBoard: React.FC = () => {
   return (
-    // <Box sx={{display: 'flex'}}>
-    //   <Sidebar />
-    //   <Box sx={{flexGrow: 1}}>
-    //     <Feed/>
-    //   </Box>
-     
-    // </Box>
-    <Grid 
-      container
-      direction="row"
-      justifyContent="center"
-      spacing={2}>
-      <Grid item xs="auto">
-        <Sidebar/>
-      </Grid>
-      <Grid item xs={4}>
-        <Feed/> 
-      </Grid>
-    </Grid>
+    <Box>
+      <Grid container spacing={2} direction={'column'}>
+        <Grid item xs={2}>
+          <Topbar />
+        </Grid>
+        <Grid item xs={6}>
+        <Stack 
+          direction={'row'}  
+          spacing={1} 
+          justifyContent={'space-between'}
+          sx={{ width: '100%', margin: 0 }}
+          >
+          <Sidebar/>
+          <Feed/>
+        </Stack>
+        </Grid>
+        </Grid> 
+    </Box>
     
   );
 };
 
-export default Layout;
+export default DashBoard;
