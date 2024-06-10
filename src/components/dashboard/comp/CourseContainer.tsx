@@ -5,8 +5,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { red } from "@mui/material/colors";
-import { CourseDetails } from "../../../ReactQuery/objects";
 import { Padding } from "@mui/icons-material";
+import { CourseDetails } from "../../../ReactQuery/objects";
 
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -70,9 +70,12 @@ interface ExpandMoreProps extends IconButtonProps {
         />
         
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
-           {course.description}
-          </Typography>
+            <Typography paragraph>
+             Units: {course.moduleCredit}
+            </Typography>
+            <Typography paragraph>
+             Workload: {course.workload}
+            </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <ExpandMore
@@ -86,12 +89,13 @@ interface ExpandMoreProps extends IconButtonProps {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Comment</Typography>
+            <Typography paragraph>Details</Typography>
             <Typography paragraph>
-             {course.faculty}
+             Department: {course.faculty}
             </Typography>
-            <Typography paragraph>
-             {course.workload}
+            
+            <Typography variant="body2" color="text.secondary">
+            {course.description}
             </Typography>
 
             
