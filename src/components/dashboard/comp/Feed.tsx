@@ -1,34 +1,40 @@
 import { Box } from "@mui/material"
 
 import { useInView } from 'react-intersection-observer'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Courses } from "../../../ReactQuery/Queries/SearchPage-query"
 import { CourseDetails } from "../../../ReactQuery/objects"
 import Post from "./CourseContainer"
+import InfiniteScroll from 'react-infinite-scroll-component'
+import axios from "axios"
 
 const Feed = () => {
-  const Course = Courses()
-  const { ref, inView } = useInView();
+  const [items, setItems] = useState<CourseDetails[]>([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [index, setIndex] = useState(2);
 
   useEffect(() => {
-    if(inView && Course.hasNextPage){
-      console.log("scroll success")
-      Course.fetchNextPage();
-    }
-  }, [inView, Course.hasNextPage, Course.fetchNextPage]);
-  console.log(Course.data?.pages.flatMap(page => page.content));
+    console.log("called api")
+    axios
+      .get("http://localhost:8081/api/mod?page=1")
+      .then((res) => setItems(res.data.content))
+      .catch((err) => console.log(err));
+  }, []);
 
-  // const content = Course.data?.pages.flatMap(page => page.content).map((todos: CourseDetails[]) =>
-  //   todos.map((todo, index) =>{
-  //     return <Post key={todo.moduleCode} course={todo} innerRef={index === todos.length - 1 ? ref : undefined} />
-  // })
-  // );
+  const fetchMoreData = () => {
+    console.log("fetched next page")
+    console.log(index)
+    axios
+      .get(`http://localhost:8081/api/mod?page=${index}`)
+      .then((res) => {
+        setItems((prevItems) => [...prevItems, ...res.data.content]);
 
-  const content = Course.data?.pages.flatMap(page => page.content) || []; // Access 'content' directly
+        index < 1559 ? setHasMore(true) : setHasMore(false);
+      })
+      .catch((err) => console.log(err));
 
-  const renderedContent = content.map((todo: CourseDetails, index: number) => (
-    <Post key={todo.moduleCode} course={todo} innerRef={index === content.length - 1 ? ref : undefined} />
-  ));
+    setIndex((prevIndex) => prevIndex + 1);
+  };
 
   return (
     <Box flex={4} p={2} 
@@ -36,8 +42,17 @@ const Feed = () => {
       display={'flex'}
       flexDirection={'column'}
       >
-      {renderedContent}
-      {Course.isFetchingNextPage && <h3> loading ...</h3>}
+      <InfiniteScroll
+      dataLength={items.length}
+      next={fetchMoreData}
+      hasMore={hasMore}
+      loader={<div>Loading...</div>}
+    >
+      
+          {items &&
+            items.map((item) => <Post course={item} key={item.moduleCode}/>)}
+        
+    </InfiniteScroll>
     </Box>
   )
 }

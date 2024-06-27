@@ -7,7 +7,7 @@ import Topbar from "../Topbar";
 
 const DashBoard: React.FC = () => {
   return (
-    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' , width: '100vw'}}>
         
           <Topbar />
           

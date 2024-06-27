@@ -11,7 +11,7 @@ const StyledToolbar = styled(Toolbar)({
 })
 
 const SearchBar = styled(Box)(() => ({
-  backgroundColor: "black",
+  backgroundColor: "white",
   padding:"5px 10px",
   borderRadius: "5px",
   width: "40%"
@@ -34,7 +34,7 @@ const Topbar = () => {
         </Link>
         
     
-        <SearchBar><InputBase placeholder="Search"/></SearchBar>
+        <SearchBar color={"white"}><InputBase placeholder="Search"/></SearchBar>
         <Avatar onClick={() => setOpen(true)} />
       </StyledToolbar>
 
