@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardActions, CardContent, CardHeader, Collapse, IconButton, IconButtonProps,Menu,MenuItem,Typography, styled } from "@mui/material";
+import { Avatar, Box, Card, CardActions, CardContent, CardHeader, Collapse, Divider, IconButton, IconButtonProps,Menu,MenuItem,Stack,Typography, styled } from "@mui/material";
 import React, { FC, useState } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -70,14 +70,24 @@ interface ExpandMoreProps extends IconButtonProps {
         />
         
         <CardContent>
-            <Typography paragraph>
-             Units: {course.moduleCredit}
-            </Typography>
-            <Typography paragraph>
-             Workload: {course.workload}
-            </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
+          <Stack direction={"row"} justifyContent={"space-between"}>
+          <Stack 
+            direction={"row"} 
+            spacing={5}
+            justifyContent={"space-evenly"}
+            >
+              <Stack>
+                <strong>Units:</strong>
+                <Typography paragraph>{parseFloat(course.moduleCredit).toFixed(1)}</Typography>
+              </Stack>
+              <Stack>
+                <strong>Workload:</strong>
+                <Typography paragraph>{course.workload}</Typography>
+              </Stack>
+            
+            
+          </Stack>
+          <CardActions disableSpacing>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
@@ -87,9 +97,11 @@ interface ExpandMoreProps extends IconButtonProps {
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActions>
+        </Stack>
+        </CardContent>
+        
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Details</Typography>
             <Typography paragraph>
              Department: {course.faculty}
             </Typography>
