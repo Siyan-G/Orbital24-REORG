@@ -6,6 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { format } from "date-fns";
 
 export default function AddEventTest() {
   const [open, setOpen] = React.useState(false);
@@ -90,11 +91,13 @@ export default function AddEventTest() {
                 variant="standard"
                 id="start-date"
                 label="Event Start Date"
-                type="date"
+                type="datetime-local"
                 defaultValue=""
                 value={startDateTime}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setStartDateTime(event.target.value);
+                  setStartDateTime(
+                    event.target.value
+                  );
                 }}
               />
               <TextField
@@ -106,7 +109,9 @@ export default function AddEventTest() {
                 defaultValue=""
                 value={endDateTime}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setEndDateTime(event.target.value);
+                  setEndDateTime(
+                    event.target.value
+                  );
                 }}
               />
               <TextField
