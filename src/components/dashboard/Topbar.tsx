@@ -1,69 +1,54 @@
-import { AppBar,  Avatar,  Button,  IconButton,  InputBase, Toolbar, styled, Box, Menu, MenuItem } from "@mui/material"
+import { AppBar,  Avatar,  Button,  IconButton,  InputBase, Toolbar, styled, Box, Menu, MenuItem, useScrollTrigger, Typography } from "@mui/material"
 import NoiseControlOffIcon from '@mui/icons-material/NoiseControlOff';
 import { useState } from "react";
 import REORGLogo from "../../assets/REORGLogo.svg"
 import { Link } from "react-router-dom";
+import React from "react";
+import { TypeH1 } from "react-bootstrap-icons";
 
+
+interface TopbarProps {
+  pageTitle: string;
+}
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  backgroundColor: 'white',
+  color: theme.palette.text.primary, // This will set the text color to the default dark color
+  boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)', // Optional: adds a subtle shadow
+}));
 
 const StyledToolbar = styled(Toolbar)({
-  display:"flex",
-  justifyContent:"space-between"
-})
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "0 24px",
+});
 
-const SearchBar = styled(Box)(() => ({
-  backgroundColor: "white",
-  padding:"5px 10px",
-  borderRadius: "5px",
-  width: "40%"
-}))
+const LogoButton = styled(Button)({
+  padding: 0,
+  '& img': {
+    height: 40,
+    marginRight: 16,
+  },
+});
 
-const Topbar = () => {
-  const [open, setOpen] = useState(false);
+
+const Topbar: React.FC<TopbarProps> = ({ pageTitle }) => {
   return (
-    <AppBar position="sticky">
-      <StyledToolbar>
-        <Link to="/">
-          <Button variant='text' size='large' sx={{display:{xs:"none", sm:"block"}}}> 
-          <img className="logo" src={REORGLogo} alt="REORG Icon" />
-          </Button>
-        </Link>
-        <Link to="/">
-          <IconButton>
-            <NoiseControlOffIcon sx={{display:{xs:"block", sm:"none"}}}/>
-          </IconButton>
-        </Link>
-        
-    
-        <SearchBar color={"white"}><InputBase placeholder="Search"/></SearchBar>
-        <Avatar onClick={() => setOpen(true)} />
-      </StyledToolbar>
-
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        
-        open={open}
-        onClose={()=>setOpen(false)}
-        
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <Link to='/userPage'>
-          <MenuItem>Profile</MenuItem>
-        </Link>
-        
-        <MenuItem>Logout</MenuItem>
-
-      </Menu>
-
-    </AppBar>
-  )
-}
+      <StyledAppBar position="sticky">
+        <StyledToolbar>
+          <Link to="/">
+            <LogoButton>
+              <img src={REORGLogo} alt="REORG Icon" />
+            </LogoButton>
+          </Link>
+          <Typography variant="h5" component="h1">
+            {pageTitle}
+          </Typography>
+          <div style={{ width: 40 }} /> {/* Spacer to balance the layout */}
+        </StyledToolbar>
+      </StyledAppBar>
+  );
+};
 
 export default Topbar  
