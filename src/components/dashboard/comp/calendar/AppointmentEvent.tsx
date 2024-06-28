@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { AppointmentStatusCode, EVENT_STATUS_COLORS } from "../constants";
-import { Appointment } from "../types";
+import { AppointmentStatusCode, EVENT_STATUS_COLORS } from "./constants";
+import { Appointment } from "./types";
 
 export default function AppointmentEvent({
   appointment,
@@ -9,7 +9,7 @@ export default function AppointmentEvent({
   appointment: Appointment;
   isMonthView?: boolean;
 }) {
-  const { location, title, description, resource,} = appointment;
+  const { location, title, description } = appointment;
   const handleEvent = () => {
     console.log("Event clicked");
   };
@@ -30,9 +30,7 @@ export default function AppointmentEvent({
           <Text fontSize="xs">{location}</Text>
         </Flex>
       </Flex>
-      <Box mt={4}>
-        {description}
-      </Box>
+      <Box mt={4}>{description}</Box>
     </Box>
   );
 }

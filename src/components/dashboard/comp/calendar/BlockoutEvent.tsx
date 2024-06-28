@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { Blockout } from "../types";
+import { Blockout } from "./types";
 
 export default function BlockoutEvent({ blockout }: { blockout: Blockout }) {
   return (

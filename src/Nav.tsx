@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/pages/Dashboard";
 import ForgetPassword from "./components/ForgetPassword";
 import LogInPage from "./components/LogInPage";
-import Calendar from "./testComponents/Calendar/components/UserCalendar";
+import Calendar from "./components/dashboard/comp/calendar/UserCalendar";
 import CoursePlanning from "./components/dashboard/pages/CoursePlanning";
 import Modules from "./components/dashboard/pages/Modules";
 import UserSettings from "./components/dashboard/pages/UserSetting";

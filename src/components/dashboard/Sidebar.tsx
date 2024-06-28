@@ -7,7 +7,7 @@ const Sidebar: React.FC = () => {
   return (
       <Box flex={1} p={2} sx={{minWidth: '200px', maxWidth: '250px' }}>
         <List style={{position:'fixed'}}>
-          <ListItem button component={Link} to="/Calender">
+          <ListItem button component={Link} to="/MainCalendar">
             <ListItemText primary="Calendar" />
           </ListItem>
           <ListItem button component={Link} to="/main/courseplanning">

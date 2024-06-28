@@ -1,11 +1,15 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { useState } from "react";
-import CustomizedCalendar from "../../../testComponents/Calendar/components/UserCalendar";
+import CustomizedCalendar from "../comp/calendar/UserCalendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 function MainCalendar() {
   return (
-    <div className="calendar-container" id="calendar-container" style={{ height: "98vh" }}>
+    <div
+      className="calendar-container"
+      id="calendar-container"
+      style={{ height: "98vh" }}
+    >
       <ChakraProvider>
         <CustomizedCalendar />
       </ChakraProvider>
