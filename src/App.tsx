@@ -10,6 +10,7 @@ import Modules from "./components/dashboard/pages/Modules";
 import Nav from "./Nav";
 import TestPage from "./testComponents/TestPage";
 import UserCalendar from "./testComponents/Calendar/components/UserCalendar";
+import MainCalendar from "./components/dashboard/pages/MainCalendar";
 
 const App: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const App: React.FC = () => {
     //===============
     // <Nav />
     //<UserCalendar />
-    <TestPage/ >
+    <MainCalendar/>
     //==============
   );
 };
