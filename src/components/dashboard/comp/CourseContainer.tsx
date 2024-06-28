@@ -1,10 +1,11 @@
-import { Avatar, Box, Card, CardActions, CardContent, CardHeader, Collapse, IconButton, IconButtonProps,Menu,MenuItem,Typography, styled } from "@mui/material";
+import { Avatar, Box, Card, CardActions, CardContent, CardHeader, Collapse, Divider, IconButton, IconButtonProps,Menu,MenuItem,Stack,Typography, styled } from "@mui/material";
 import React, { FC, useState } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { red } from "@mui/material/colors";
+import AddIcon from '@mui/icons-material/Add';
+import { red } from "@mui/material/colors"; 
 import { Padding } from "@mui/icons-material";
 import { CourseDetails } from "../../../ReactQuery/objects";
 
@@ -51,12 +52,17 @@ interface ExpandMoreProps extends IconButtonProps {
         maxHeight={'100%'}
         p={1}
         >
-      <Card sx={{boxShadow:5}}>
+      <Card sx={{ 
+              borderRadius: '16px', 
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              maxWidth: 600,
+              margin: 'auto'
+            }}>
         <CardHeader
           action={
             <Box>
-            <IconButton aria-label="settings" onClick={handleClick}>
-              <MoreVertIcon />
+            <IconButton onClick={handleClick}>
+              <AddIcon sx={{ color: 'grey.500' }} />
             </IconButton>
             <Menu 
              anchorEl={anchorEl}
@@ -70,14 +76,28 @@ interface ExpandMoreProps extends IconButtonProps {
         />
         
         <CardContent>
-            <Typography paragraph>
-             Units: {course.moduleCredit}
-            </Typography>
-            <Typography paragraph>
-             Workload: {course.workload}
-            </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
+          <Stack direction={"row"} justifyContent={"space-between"}>
+          <Stack 
+            direction={"row"} 
+            spacing={10}
+            justifyContent={"space-evenly"}
+            >
+              <Stack> 
+                <strong>Units:</strong>
+                <Typography paragraph>{parseFloat(course.moduleCredit).toFixed(1)}</Typography>
+              </Stack>
+              <Stack>
+                <strong>Workload:</strong>
+                <Typography paragraph>{course.workload}</Typography>
+              </Stack>
+              <Stack>
+                <strong>Exam Date:</strong>
+                <Typography paragraph>*testdate 15122001</Typography>
+              </Stack>
+            
+            
+          </Stack>
+          <CardActions disableSpacing>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
@@ -87,9 +107,11 @@ interface ExpandMoreProps extends IconButtonProps {
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActions>
+        </Stack>
+        </CardContent>
+        
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Details</Typography>
             <Typography paragraph>
              Department: {course.faculty}
             </Typography>
