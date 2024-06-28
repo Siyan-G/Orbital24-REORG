@@ -5,7 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 function MainCalendar() {
   return (
-    <div className="test-container" id="test-container">
+    <div className="calendar-container" id="calendar-container" style={{ height: "98vh" }}>
       <ChakraProvider>
         <CustomizedCalendar />
       </ChakraProvider>

@@ -6,6 +6,7 @@ import Calendar from "./testComponents/Calendar/components/UserCalendar";
 import CoursePlanning from "./components/dashboard/pages/CoursePlanning";
 import Modules from "./components/dashboard/pages/Modules";
 import UserSettings from "./components/dashboard/pages/UserSetting";
+import MainCalendar from "./components/dashboard/pages/MainCalendar";
 
 // this is where we put all our routes. DO NOT SHOVE ALL INTO ONE FILE OOP!
 // ================================
@@ -15,7 +16,7 @@ const Nav = () => {
       <Route path={"/"} element={<LogInPage />} />
       <Route path={"/forget"} element={<ForgetPassword />} />
       <Route path="/main" element={<Dashboard />} />
-      {/* <Route index element={<Calendar />} /> */}
+      <Route index element={<MainCalendar />} />
       <Route path="/main/courseplanning" element={<CoursePlanning />} />
       <Route path="/main/modules" element={<Modules />} />
       <Route path="/main/usersettings" element={<UserSettings />} />
