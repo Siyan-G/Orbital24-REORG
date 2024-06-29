@@ -19,8 +19,8 @@ import moment from "moment";
 import { cloneElement, useCallback, useMemo, useState } from "react";
 import { EventProps, View, Views } from "react-big-calendar";
 import { ArrowLeft, ArrowRight, ZoomIn, ZoomOut } from "react-bootstrap-icons";
-import { EVENTS, RESOURCES, VIEW_OPTIONS } from "../constants";
-import { EventItem } from "../types";
+import { EVENTS, RESOURCES, VIEW_OPTIONS } from "./constants";
+import { EventItem } from "./types";
 import Calendar from "./Calendar";
 import AppointmentEvent from "./AppointmentEvent";
 import DatePicker from "react-datepicker";
@@ -273,18 +273,17 @@ export default function Demo() {
                   )
                 }
               >
-                New Appointment
+                New Event
               </MenuItem>
-              <MenuItem>New Blockout</MenuItem>
             </MenuList>
           </Menu>
         </Box>
         <Calendar
           events={EVENTS}
-          defaultDate={"2022-10-10"}
+          defaultDate={moment().toDate()}
           defaultView={Views.WEEK}
-          min={moment("2022-10-10T00:00:00").toDate()}
-          max={moment("2022-10-10T23:59:59").toDate()}
+          // min={moment("2022-10-10T00:00:00").toDate()}
+          // max={moment("2022-10-10T23:59:59").toDate()}
           // resources={view === Views.DAY ? RESOURCES : undefined}
           // Custom Props
 
