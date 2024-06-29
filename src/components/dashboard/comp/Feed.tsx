@@ -13,6 +13,7 @@ const Feed = () => {
   const [hasMore, setHasMore] = useState(true);
   const [index, setIndex] = useState(2);
   const [searchTerm, setSearchTerm] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     console.log("called api")
@@ -51,10 +52,21 @@ const Feed = () => {
     },
   }));
 
-  const handleSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-    // Implement search logic here if needed
-  }, []);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSearch = useCallback(() => {
+    setSearchTerm(inputValue);
+    // Make API call for search
+    axios
+      .get(`http://localhost:8081/api/mod/code?moduleCode=${inputValue}`)
+      .then((res) => {
+        setItems(res.data);
+        setHasMore(false); // Disable infinite scroll for search results
+      })
+      .catch((err) => console.log(err));
+  }, [inputValue]);
 
   return (
     
@@ -67,11 +79,11 @@ const Feed = () => {
         <InputBase 
           placeholder="Search Mods" 
           fullWidth
-          value={searchTerm}
-          onChange={handleSearch}
+          value={inputValue}
+          onChange={handleInputChange}
           inputProps={{ 'aria-label': 'search mods' }}
         />
-        <IconButton type="button" aria-label="search">
+        <IconButton type="button" aria-label="search" onClick={handleSearch}>
           <SearchIcon />
         </IconButton>
       </SearchBar>

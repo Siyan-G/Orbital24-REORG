@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   Box, 
   Button, 
@@ -39,39 +39,46 @@ interface ExpandMoreProps extends IconButtonProps {
   
 const CourseOverview = () => {
     const [expanded, setExpanded] = React.useState(false);
+    const [semesters, setSemesters] = useState<{ id: number; name: string }[]>([]);
+    const [currentAcademicYear, setCurrentAcademicYear] = useState('2122');
+    const [currentSemester, setCurrentSemester] = useState(1);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
       };
-    const [semesters, setSemesters] = useState([
-    {
-      id: 1,
-      name: 'AY24/25 Sem 1',
-      courses: [
-        { id: 1, code: 'CS2100', name: 'Computer Organisation', grade: '-', gpa: '-' },
-        { id: 2, code: 'CS2103T', name: 'Software Engineering', grade: '-', gpa: '-' },
-        { id: 3, code: 'CS2102', name: 'Database Systems', grade: '-', gpa: '-' },
-        { id: 4, code: 'CS2101', name: 'Communication', grade: '-', gpa: '-' },
-      ]
-    },
-    {
-      id: 2,
-      name: 'AY23/24 Sem 2',
-      courses: [
-        { id: 1, code: 'CS2030S', name: 'Programming Methodology II', grade: 'A-', gpa: '4.5' },
-        { id: 2, code: 'CS2040S', name: 'Data Structures and Algorithms', grade: 'B+', gpa: '4.0' },
-        { id: 3, code: 'ST2334', name: 'Statistics and Probability', grade: 'A-', gpa: '4.5' },
-        { id: 4, code: 'ES2660', name: 'Communication in Information', grade: 'B+', gpa: '4.0' },
-      ]
-    },
-    // Add more semesters as needed
-  ]);
+    
+      useEffect(() => {
+        // Initialize with the first semester if no semesters exist
+        if (semesters.length === 0) {
+          addSemester();
+        }
+      }, []);
+
+      const generateNextSemesterName = () => {
+        let year = currentAcademicYear;
+        let semester = currentSemester;
+        console.log("acadyear" + currentAcademicYear + "+" + currentSemester)
+    
+        if (semester === 2) {
+          const nextYear = parseInt(year.slice(2)) + 1;
+          const currYear = parseInt(year.slice(2));
+          year = `${currYear}${nextYear}`;
+          semester = 1;
+        } else {
+          semester++;
+        }
+    
+        setCurrentAcademicYear(year);
+        setCurrentSemester(semester);
+    
+        return `AY${year}_S${semester}`;
+      };
 
   const addSemester = () => {
+    const newSemesterName = generateNextSemesterName();
     const newSemester = {
       id: semesters.length + 1,
-      name: `New Semester ${semesters.length + 1}`,
-      courses: []
+      name: newSemesterName,
     };
     setSemesters([...semesters, newSemester]);
   };
@@ -92,8 +99,7 @@ const CourseOverview = () => {
       {semesters.map((semester) => (
         <SemesterCard 
           key={semester.id}
-          name={semester.name}
-          courses={semester.courses}
+          semester={semester.name}
         />
       ))}
 
