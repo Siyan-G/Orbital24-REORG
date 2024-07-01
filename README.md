@@ -2,9 +2,9 @@
 
 ## Milestone Two
 
-## Abstract':'
+## Abstract:
 
-This document is a continuation of our proposal, providing additional details and expanding on the ideas outlined previously. It also covers different aspect of our development process such as our design logic, development plan, wireframes. However, the features stated are subjected to changes due to various limitations and challenges we are facing. Thank you for taking the time to read this document. .We welcome any feedback to improve the project further'.'
+This document is a continuation of our proposal, providing additional details and expanding on the ideas outlined previously. It also covers different aspect of our development process such as our design logic, development plan, wireframes. However, the features stated are subjected to changes due to various limitations and challenges we are facing. Thank you for taking the time to read this document. .We welcome any feedback to improve the project further.
 
 ## Poster:  [6127 Milestone Two Poster](https://drive.google.com/file/d/1TjZjMqfUqIlGZ13LPyIzIVRTZxByi7Kq/view?usp=drive_link)
 
@@ -14,7 +14,7 @@ This document is a continuation of our proposal, providing additional details an
 
 ## Aim
 
-REORG aims to be an all-in-one academic management platform which allows NUS students to manage their academic schedule, course progress and planning'.'
+REORG aims to be an all-in-one academic management platform which allows NUS students to manage their academic schedule, course progress and planning.
 
 ## Motivation
 
@@ -66,7 +66,7 @@ Customised Tool bar:
 2. Date picker to jump to specific date
 3. Today button to return to today
 4. Previous and next toggle buttons to toggle to the previous/next day/week/month
-5. View options for user to view events in different layout 
+5. View options for user to view events in different layout
 User view options:
 1. Day
 2. Week
@@ -75,30 +75,30 @@ User view options:
 
 #### Implementation Philosophy
 
-Calendars are important for students. It is useful in time management, deadline tracking, organisation of events, and provides a visual reminder of our commitments, plans and schedules. 
-Our design and implementation philosophy revolves around simplicity, accessibility and integration, aiming to enhance productivity and organisation of academic commitments. 
-Users can view the events in 4 different formats which are useful for daily, weekly and monthly personal planning. Calendar is simplistic and intuitive. 
+Calendars are important for students. It is useful in time management, deadline tracking, organisation of events, and provides a visual reminder of our commitments, plans and schedules.
+Our design and implementation philosophy revolves around simplicity, accessibility and integration, aiming to enhance productivity and organisation of academic commitments.
+Users can view the events in 4 different formats which are useful for daily, weekly and monthly personal planning. Calendar is simplistic and intuitive.
 
 ### Module (completed)
 
 #### Description
 
 As part of the academic management platform for NUS students, we include a collection of module information that are available for current academic year.
-A search function is in place to allow users to search for modules with module code matched with user input. 
+A search function is in place to allow users to search for modules with module code matched with user input.
 Furthermore, together with Course Progress Tracker (see Course Progress), the modules are tagged to indicate if it is required based on user’s course profile.
 
 #### Implementation Philosophy
 
-The main motivation here is to provide user with a database of modules available. Additionally, our original plan includes a modular tree that allows users to see the modules required to unlock certain module and the modules unlocked after completion of the selected module. 
+The main motivation here is to provide user with a database of modules available. Additionally, our original plan includes a modular tree that allows users to see the modules required to unlock certain module and the modules unlocked after completion of the selected module.
 
 ### Course Progress (partially completed)
 
 #### Description
 
-This is the core feature of REORG, to allow users to keep track of their course progress and modules that they have taken. 
-Users will be able to set up their course profile to include degree requirements, such as the number of modular units they have to complete, the compulsory modules need to be taken etc. 
-Users can input their semester information on the modules taken with grades. GPA by semester is automatically calculated. 
-An overall GPA will be displayed based on user input, as well as the accumulated modular units completed. 
+This is the core feature of REORG, to allow users to keep track of their course progress and modules that they have taken.
+Users will be able to set up their course profile to include degree requirements, such as the number of modular units they have to complete, the compulsory modules need to be taken etc.
+Users can input their semester information on the modules taken with grades. GPA by semester is automatically calculated.
+An overall GPA will be displayed based on user input, as well as the accumulated modular units completed.
 
 #### Implementation Philosophy
 
@@ -192,13 +192,13 @@ The database contains several interrelated tables which is shown the ERD below:
 
 ![development plane](./readme_assets/development_plan.png)
 
-## Tech Stack':'
+## Tech Stack:
 
 • React Typescript (frontend)
 • Java Spring Boot (backend, RESTful API)
 • MySQL (relational database)
 
-## Project Log':'
+## Project Log:
 
 [Orbital24-6127-REORG](https://docs.google.com/spreadsheets/d/17JS7bcnGZdaE_93xDu4N9nRWD4szjpai-7lixYyifF0/edit?usp=sharing)
 
