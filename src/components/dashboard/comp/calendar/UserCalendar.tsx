@@ -151,7 +151,7 @@ export default function Demo() {
   return (
     <Flex height="100%" direction={"column"} width="100%" gap={2} p={2}>
       <Flex justifyContent={"space-between"} alignItems="center">
-        <Box p={2} width="300px">
+        <Box p={2} width="200px">
           <Flex gap={4} alignItems="center">
             <ZoomOut size={20} />
             <RangeSlider
@@ -175,8 +175,9 @@ export default function Demo() {
             input {
               border: 2px solid ${PRIMARY_COLOR};
               border-radius: 24px;
-              padding: 6px;
-              padding-left: 10px;
+              padding: 3px;
+              padding-left: 4px;
+              width: 150px;
             }
             z-index: 4;
             position: relative;
@@ -202,7 +203,7 @@ export default function Demo() {
               color="white"
               alignItems={"center"}
               justifyContent="center"
-              width={260}
+              width={200}
             >
               <Text fontSize={"medium"}>{dateText}</Text>
             </Flex>

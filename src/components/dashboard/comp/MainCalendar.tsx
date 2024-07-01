@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { useState } from "react";
-import CustomizedCalendar from "../comp/calendar/UserCalendar";
+import CustomizedCalendar from "./calendar/UserCalendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 function MainCalendar() {
