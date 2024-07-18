@@ -16,7 +16,7 @@ const CoursePlanning: React.FC = () => {
         <Stack 
           direction={'row'}  
           spacing={1}
-          justifyContent={'space-between'}
+          justifyContent={'flex-start'}
           sx={{ width: '100%', height: '100%' }}
           >
           <Sidebar/>

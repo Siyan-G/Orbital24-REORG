@@ -19,6 +19,7 @@ const UserSettings: React.FC = () => {
           >
           <Sidebar/>
           <Divider orientation="vertical" flexItem />
+          <Box width={'15%'}/>
           <AccountSettings/>
         </Stack>
         </Box>  

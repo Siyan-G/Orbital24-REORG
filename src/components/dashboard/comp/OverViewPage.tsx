@@ -17,7 +17,8 @@ import {
   CardActions,
   Stack,
   Collapse,
-  CardContent
+  CardContent,
+  ThemeProvider
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import SemesterCard from './SemesterContainer';
@@ -84,9 +85,8 @@ const CourseOverview = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, p: 3 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-        <Typography variant="h4">Course Overview</Typography>
+    <Box sx={{ flexGrow: 1, p: 3, maxWidth:'50%'}}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
         <Button 
           variant="contained" 
           startIcon={<AddIcon />}

@@ -46,18 +46,20 @@ interface ExpandMoreProps extends IconButtonProps {
       <Box 
         key={course.moduleCode} 
         ref={innerRef} 
-        flex={1}
-        minWidth={0}
-        maxWidth={'100%'}
-        maxHeight={'100%'}
         p={1}
+        flexGrow={1}
         >
       <Card sx={{ 
+              border: '1px light gray',
               borderRadius: '16px', 
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-              maxWidth: 600,
-              margin: 'auto'
+              boxShadow: 2,
+              margin: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              flexGrow: 1,
+              // clipPath: 'polygon(0 10px, 10px 10px, 10px 0,calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,10px 100%, 10px calc(100% - 10px), 0 calc(100% - 10px))'
             }}>
+              <Stack direction={'column'}>
         <CardHeader
           action={
             <Box>
@@ -74,9 +76,10 @@ interface ExpandMoreProps extends IconButtonProps {
           title={course.moduleCode}
           subheader={course.title}
         />
+        <Divider orientation="horizontal" flexItem />
         
         <CardContent>
-          <Stack direction={"row"} justifyContent={"space-between"}>
+          <Stack direction={"row"} justifyContent={"space-between"} spacing={10}>
           <Stack 
             direction={"row"} 
             spacing={10}
@@ -119,10 +122,9 @@ interface ExpandMoreProps extends IconButtonProps {
             <Typography variant="body2" color="text.secondary">
             {course.description}
             </Typography>
-
-            
           </CardContent>
         </Collapse>
+        </Stack>
       </Card>
       </Box>
     );

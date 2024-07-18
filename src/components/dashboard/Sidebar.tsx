@@ -1,23 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { List, ListItem, ListItemText, Drawer, Box } from "@mui/material";
+import { List, ListItem, ListItemText, Drawer, Box, ListItemIcon } from "@mui/material";
 import REORGLogo from "../../assets/REORGLogo.svg"
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import WorkIcon from '@mui/icons-material/Work';
+import SearchIcon from '@mui/icons-material/Search';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const Sidebar: React.FC = () => {
   return (
       <Box flex={1} p={2} sx={{minWidth: '200px', maxWidth: '250px' }}>
         <List style={{position:'fixed'}}>
-          <ListItem button component={Link} to="/main/calendar">
-            <ListItemText primary="Calendar" />
+          <ListItem component={Link} to="/main/calendar">
+              <ListItemIcon>
+                <CalendarTodayIcon />
+              </ListItemIcon>
+            <ListItemText primary="Calendar" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
           </ListItem>
-          <ListItem button component={Link} to="/main/courseplanning">
-            <ListItemText primary="Course Planning" />
+          <ListItem component={Link} to="/main/courseplanning">
+              <ListItemIcon>
+                <WorkIcon />
+              </ListItemIcon>
+            <ListItemText primary="Course Planning" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
           </ListItem>
-          <ListItem button component={Link} to="/main">
-            <ListItemText primary="Modules" />
+          <ListItem component={Link} to="/main">
+              <ListItemIcon>
+                <SearchIcon />
+              </ListItemIcon>
+            <ListItemText primary="Modules" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
           </ListItem>
-          <ListItem button component={Link} to="/main/usersettings">
-            <ListItemText primary="User Settings" />
+          <ListItem component={Link} to="/main/usersettings">
+              <ListItemIcon>    
+                <SettingsIcon />
+              </ListItemIcon>
+            <ListItemText primary="User Settings" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
           </ListItem>
         </List>
       </Box>

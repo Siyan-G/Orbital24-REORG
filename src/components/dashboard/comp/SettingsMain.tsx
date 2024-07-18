@@ -21,7 +21,8 @@ const AccountSettings = () => {
   const [dateFormat, setDateFormat] = useState('MM/DD/YYYY');
 
   return (
-    <Container maxWidth="sm">
+    <Box sx={{ flexGrow: 1, p: 3, maxWidth:'40%'}} justifyContent={'center'}>
+    <Container>
       <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
         <Typography variant="h4" gutterBottom>
           Account
@@ -99,6 +100,7 @@ const AccountSettings = () => {
         </Grid>
       </Paper>
     </Container>
+    </Box>
   );
 };
 

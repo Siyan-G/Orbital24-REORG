@@ -1,4 +1,4 @@
-import { AppBar,  Avatar,  Button,  IconButton,  InputBase, Toolbar, styled, Box, Menu, MenuItem, useScrollTrigger, Typography } from "@mui/material"
+import { AppBar,  Avatar,  Button,  IconButton,  InputBase, Toolbar, styled, Box, Menu, MenuItem, useScrollTrigger, Typography, Stack } from "@mui/material"
 import NoiseControlOffIcon from '@mui/icons-material/NoiseControlOff';
 import { useState } from "react";
 import REORGLogo from "../../assets/REORGLogo.svg"
@@ -35,17 +35,26 @@ const LogoButton = styled(Button)({
 
 const Topbar: React.FC<TopbarProps> = ({ pageTitle }) => {
   return (
-      <StyledAppBar position="sticky">
+      <StyledAppBar position="static">
         <StyledToolbar>
+          <Stack
+            justifyContent={'flex start'}
+            direction={'row'}
+            spacing={{xs: 15}}>
+          <Box>
           <Link to="/">
             <LogoButton>
               <img src={REORGLogo} alt="REORG Icon" />
             </LogoButton>
           </Link>
-          <Typography variant="h5" component="h1">
+          </Box>
+          <Box>
+          <Typography variant="h5" component="h1" fontWeight={'Medium'}>
             {pageTitle}
           </Typography>
-          <div style={{ width: 40 }} /> {/* Spacer to balance the layout */}
+          </Box>
+          {/* <div style={{ width: 40 }} /> Spacer to balance the layout */}
+          </Stack>
         </StyledToolbar>
       </StyledAppBar>
   );

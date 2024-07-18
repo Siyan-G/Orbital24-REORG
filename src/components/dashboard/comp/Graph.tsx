@@ -35,8 +35,8 @@ const Graph = () => {
         console.log('GPA:', gpa);
         console.log('Modular Units:', modularUnits);
   return (
-    <Box>
-    <Card sx={{ p: 2, backgroundColor: '#e8eaf6' }}>
+    <Box width={'350px'}>
+    <Card sx={{ p: 2, backgroundColor: '#e8eaf6', borderRadius: 5, boxShadow: 2 }}>
         <Typography variant="h6" gutterBottom>Summary</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Box>

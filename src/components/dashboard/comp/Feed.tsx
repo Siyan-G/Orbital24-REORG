@@ -70,10 +70,13 @@ const Feed = () => {
 
   return (
     
-    <Box flex={4} p={2} 
-      justifyContent={'center'}
+    <Box  p={3} 
+      justifyContent={'flex-start'}
       display={'flex'}
       flexDirection={'column'}
+      alignContent={'flex-start'}
+      flexGrow={1}
+      maxWidth={'50%'}
       >
         <SearchBar>
         <InputBase 
