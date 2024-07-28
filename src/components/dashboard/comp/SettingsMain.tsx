@@ -19,6 +19,12 @@ const AccountSettings = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [timeFormat, setTimeFormat] = useState('12h');
   const [dateFormat, setDateFormat] = useState('MM/DD/YYYY');
+  const [Username, setUsername] = useState('');
+  const [Email, setEmail] = useState('');
+
+  const handleDelete = () => {
+
+  }
 
   return (
     <Box sx={{ flexGrow: 1, p: 3, maxWidth: "40%" }} justifyContent={"center"}>
@@ -48,6 +54,9 @@ const AccountSettings = () => {
                 fullWidth
                 label="Username"
                 defaultValue="Peterdactyl2015"
+                InputProps={{
+                  readOnly: true,
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -55,12 +64,15 @@ const AccountSettings = () => {
                 fullWidth
                 label="Email"
                 defaultValue="hello@designdrops.io"
+                InputProps={{
+                  readOnly: true,
+                }}
               />
               {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
               Email not verified. <Link href="#" color="error" sx={{ ml: 1 }}>Verify now</Link>
             </Typography> */}
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <FormControlLabel
                 control={
                   <Switch
@@ -71,7 +83,7 @@ const AccountSettings = () => {
                 label="Dark Mode"
               />
             </Grid>
-            {/* <Grid item xs={6}>
+             <Grid item xs={6}>
             <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center' }}>
               Time Format <InfoIcon fontSize="small" sx={{ ml: 1 }} />
             </Typography>
@@ -108,11 +120,9 @@ const AccountSettings = () => {
                 Log Out
               </Link>
             </Grid>
-            {/* <Grid item xs={12}>
-              <Link href="#" color="error">
-                Delete my account
-              </Link>
-            </Grid> */}
+            <Grid item xs={12}>
+              <Button onClick={handleDelete}>Delete my account</Button>
+            </Grid>
           </Grid>
         </Paper>
       </Container>
