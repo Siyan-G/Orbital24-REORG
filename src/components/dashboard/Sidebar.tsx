@@ -6,14 +6,11 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import WorkIcon from '@mui/icons-material/Work';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
-<<<<<<< HEAD
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-=======
 import LogoutIcon from "@mui/icons-material/Logout";
 import Alert from "@mui/material/Alert";
 import { useAuth } from "../context/AuthContext";
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
->>>>>>> 322c14c7f8bcfe215050d133bbc46fd25593c934
 
 const Sidebar: React.FC = () => {
 
@@ -23,45 +20,9 @@ const Sidebar: React.FC = () => {
   }
   
   return (
-<<<<<<< HEAD
-      <Box flex={1} p={2} sx={{minWidth: '200px', maxWidth: '250px' }}>
-        <List style={{position:'fixed'}}>
-          <ListItem component={Link} to="/main/calendar">
-              <ListItemIcon>
-                <CalendarTodayIcon />
-              </ListItemIcon>
-            <ListItemText primary="Calendar" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
-          </ListItem>
-          <ListItem component={Link} to="/main/courseplanning">
-              <ListItemIcon>
-                <WorkIcon />
-              </ListItemIcon>
-            <ListItemText primary="Course Planning" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
-          </ListItem>
-          <ListItem component={Link} to="/main">
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
-            <ListItemText primary="Modules" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
-          </ListItem>
-          <ListItem component={Link} to="/main/journal">
-              <ListItemIcon>    
-                <AutoStoriesIcon/>
-              </ListItemIcon>
-            <ListItemText primary="journal" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
-          </ListItem>
-          <ListItem component={Link} to="/main/usersettings">
-              <ListItemIcon>    
-                <SettingsIcon />
-              </ListItemIcon>
-            <ListItemText primary="User Settings" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
-          </ListItem>
-        </List>
-      </Box>
-=======
     <Box flex={1} p={2} sx={{ minWidth: "200px", maxWidth: "250px" }}>
       <List style={{ position: "fixed" }}>
-        <ListItem component={Link} to="/main/calendar">
+        {/* <ListItem component={Link} to="/main/calendar">
           <ListItemIcon>
             <CalendarTodayIcon />
           </ListItemIcon>
@@ -71,7 +32,7 @@ const Sidebar: React.FC = () => {
               style: { fontWeight: 500, color: "#9395b2" },
             }}
           />
-        </ListItem>
+        </ListItem> */}
         <ListItem component={Link} to="/main/courseplanning">
           <ListItemIcon>
             <WorkIcon />
@@ -89,6 +50,17 @@ const Sidebar: React.FC = () => {
           </ListItemIcon>
           <ListItemText
             primary="Modules"
+            primaryTypographyProps={{
+              style: { fontWeight: 500, color: "#9395b2" },
+            }}
+          />
+        </ListItem>
+        <ListItem component={Link} to="/main/journal">
+          <ListItemIcon>
+            <AutoStoriesIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Journal"
             primaryTypographyProps={{
               style: { fontWeight: 500, color: "#9395b2" },
             }}
@@ -118,7 +90,6 @@ const Sidebar: React.FC = () => {
         </ListItem>
       </List>
     </Box>
->>>>>>> 322c14c7f8bcfe215050d133bbc46fd25593c934
   );
 };
 

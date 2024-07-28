@@ -42,7 +42,7 @@ const Topbar: React.FC<TopbarProps> = ({ pageTitle }) => {
             direction={'row'}
             spacing={{xs: 15}}>
           <Box>
-          <Link to="/">
+          <Link to="/main">
             <LogoButton>
               <img src={REORGLogo} alt="REORG Icon" />
             </LogoButton>

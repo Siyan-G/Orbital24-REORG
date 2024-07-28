@@ -12,7 +12,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
-// Create the context
+// Create the context 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Provider component
@@ -24,7 +24,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   const login = (userData: User) => {
     setUser(userData);
     // Store user data in localStorage or sessionStorage if needed
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("user", userData.email);
   };
 
   const logout = () => {

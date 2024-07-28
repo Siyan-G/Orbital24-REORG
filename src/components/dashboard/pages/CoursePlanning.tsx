@@ -1,12 +1,22 @@
 import { Feed } from "@mui/icons-material";
 import { Divider, Box, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Topbar from "../Topbar";
 import OverViewPage from "../comp/OverViewPage";
 import Graph from "../comp/Graph";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const CoursePlanning: React.FC = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
   return (
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' , width: '100vw'}}>
         

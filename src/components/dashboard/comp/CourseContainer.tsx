@@ -94,8 +94,8 @@ interface ExpandMoreProps extends IconButtonProps {
                 <Typography paragraph>{course.workload}</Typography>
               </Stack>
               <Stack>
-                <strong>Exam Date:</strong>
-                <Typography paragraph>*testdate 15122001</Typography>
+                <strong>Faculty</strong>
+                <Typography paragraph>{course.faculty}</Typography>
               </Stack>
             
             

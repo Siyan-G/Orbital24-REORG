@@ -104,9 +104,11 @@ const LogInPage : React.FC = () => {
       const pass = data[0].password;
       console.log('Password:', pass);
 
+      const email = data[0].email;
+
       if (username == name && password == pass){
         console.log('Validated User & Password');
-        auth.login({username, email});
+        auth.login({username: name, email: email});
         navigate("/main");
       //==================================
       }

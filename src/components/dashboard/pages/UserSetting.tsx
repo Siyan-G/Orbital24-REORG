@@ -1,10 +1,21 @@
 import { Divider, Box, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Topbar from "../Topbar";
 import AccountSettings from "../comp/SettingsMain";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const UserSettings: React.FC = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
   return (
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' , width: '100vw'}}>
         

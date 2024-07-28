@@ -20,6 +20,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 interface Course {
   email: string;
@@ -45,12 +46,13 @@ interface SemesterCardProps {
 }
 
 const SemesterCard: React.FC<SemesterCardProps> = ({semester}) => {
-  const email = "test@email.com"
+  const user = localStorage.getItem("user")
+
   const [expanded, setExpanded] = useState(false);
   const [courses, setCourses] = useState<Course[]>([]);
   const [newCourse, setNewCourse] = useState<CourseInputDTO>({
     credit: 4.0,
-    email: email,
+    email: user||'',
     courseCode: '',
     title: '',
     gradeLetter: '',
@@ -66,12 +68,13 @@ const SemesterCard: React.FC<SemesterCardProps> = ({semester}) => {
 
   useEffect(() => {
     fetchSemesterData();
-  }, [email, semester]);
+  }, [user, semester]);
 
   const fetchSemesterData = async () => {
+    console.log("user "+ user)
     try {
-      const response = await axios.get('http://localhost:8085/api/grade', {
-        params: { email, sem: semester }
+      const response = await axios.get('http://localhost:8181/api/grade', {
+        params: { email: user, sem: semester}
       });
       setCourses(response.data);
     } catch (error) {
@@ -81,7 +84,7 @@ const SemesterCard: React.FC<SemesterCardProps> = ({semester}) => {
 
   const handleAddCourse = async () => {
     try {
-      await axios.post('http://localhost:8085/api/grade', newCourse);
+      await axios.post('http://localhost:8181/api/grade', newCourse);
       fetchSemesterData();
       setNewCourse({
         ...newCourse,
@@ -96,8 +99,8 @@ const SemesterCard: React.FC<SemesterCardProps> = ({semester}) => {
 
   const handleUpdateGrade = async (courseCode: string) => {
     try {
-      await axios.put('http://localhost:8085/api/grade/update', null, {
-        params: { email, courseCode, newGrade }
+      await axios.put('http://localhost:8181/api/grade/update', null, {
+        params: { user, courseCode, newGrade }
       });
       fetchSemesterData();
       setEditingCourse(null);

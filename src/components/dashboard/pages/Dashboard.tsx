@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Divider, Grid, Stack } from "@mui/material";
 import Sidebar from "../Sidebar";
 import Feed from "../comp/Feed";
 import Topbar from "../Topbar";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 
 const DashBoard: React.FC = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
   return (
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' , width: '100vw'}}>
         

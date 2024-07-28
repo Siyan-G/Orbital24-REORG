@@ -2,17 +2,21 @@ import { Card, Typography, Box } from '@mui/material'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { PieChart } from 'react-minimal-pie-chart';
+import { useAuth } from '../../context/AuthContext';
 const Graph = () => {
+    const user = localStorage.getItem("user")
     const [gpa, setGpa] = useState(0);
     const [modularUnits, setModularUnits] = useState(0);
 
     useEffect(() => {
         // API call for GPA
         console.log("called api")
-        axios.get('http://localhost:8085/api/grade/GPA?email=test@email.com')
+        axios.get(`http://localhost:8181/api/grade/GPA?email=${user}`)
         .then(response => {
             console.log('GPA Response:', response.data); // Debug: Log the response
-            setGpa(response.data.toFixed(2));
+            if (response.data != null) {
+              setGpa(response.data.toFixed(2));
+            }
           })
           .catch(error => {
             console.error('Error fetching GPA:', error);
@@ -22,7 +26,7 @@ const Graph = () => {
       useEffect(() => {
         // API call for Modular Units
         console.log("called api")
-        axios.get('http://localhost:8085/api/grade/Units?email=test@email.com')
+        axios.get(`http://localhost:8181/api/grade/Units?email=${user}`)
             .then(response => {
             console.log('Modular Units Response:', response.data); // Debug: Log the response
             setModularUnits(response.data);
@@ -57,7 +61,7 @@ const Graph = () => {
               rounded
               label={({ dataEntry }) => dataEntry.title}
               labelStyle={(index) => ({
-                fill: '#808080',
+                fill: '#818180',
                 fontSize: '5px',
                 fontFamily: 'sans-serif',
               })}

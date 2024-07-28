@@ -1,41 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
   Button,
   TextField,
-  Switch,
-  Select,
-  MenuItem,
-  FormControlLabel,
   Link,
   Container,
   Paper,
   Grid,
 } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
 import { useAuth } from '../../context/AuthContext';
+import axios from 'axios';
 
 const AccountSettings = () => {
   const auth = useAuth();
   const [darkMode, setDarkMode] = useState(false);
   const [timeFormat, setTimeFormat] = useState('12h');
   const [dateFormat, setDateFormat] = useState('MM/DD/YYYY');
-  const [Username, setUsername] = useState(auth.user?.username ?? "");
-  const [Email, setEmail] = useState(auth.user?.email ?? "");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleDelete = () => {
-    // Delete the user account
-  }
+  const email = localStorage.getItem("user");
+
+  useEffect(() => {
+    // Load user data from API if email is available
+    const fetchUserData = async () => {
+      if (email) {
+        try {
+          const response = await axios.get(`http://localhost:8181/api/user/${email}`);
+          setUsername(response.data.username || "");
+          // Note: Make sure not to display or handle password directly
+          // For security reasons, don't set password from the API response
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+      }
+    };
+    
+    fetchUserData();
+  }, [email]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:8181/api/user/email/${email}`);
+      auth.logout(); // Optionally, log out the user
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
   const handleLogout = () => {
-    // Logout the user
     auth.logout();
-  }
+  };
 
-  const handleUpdate = () => {
-    // Update the user account
-  }
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`http://localhost:8181/api/user/${email}`, {
+        username,
+        password
+      });
+      console.log('User updated successfully');
+      auth.logout();
+    } catch (error) {
+      console.error('Error updating user:', error);
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1, p: 3, maxWidth: "40%" }} justifyContent={"center"}>
@@ -45,95 +74,29 @@ const AccountSettings = () => {
             Account
           </Typography>
           <Grid container spacing={3}>
-            {/* <Grid item xs={12}>
-            <Typography variant="subtitle1">Profile picture</Typography>
-            <Button variant="outlined" size="small">
-              Choose file
-            </Button>
-            <Typography variant="caption" display="block" sx={{ mt: 1 }}>
-              no file selected
-            </Typography>
-            <Typography variant="caption" color="textSecondary">
-              maximum image size is 1 MB
-            </Typography>
-          </Grid> */}
             <Grid item xs={12}>
-              <TextField fullWidth label="Username" value={Username} />
+              <TextField
+                fullWidth
+                label="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Email"
-                InputProps={{
-                  readOnly: true,
-                }}
-                value={Email}
-              />
-              {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Email"
-                InputProps={{
-                  readOnly: true,
-                }}
-              >
-                {Email}
-                <TextField/>
-              {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-              Email not verified. <Link href="#" color="error" sx={{ ml: 1 }}>Verify now</Link>
-            </Typography> */}
-            </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={darkMode}
-                    onChange={() => setDarkMode(!darkMode)}
-                  />
-                }
-                label="Dark Mode"
+                label="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
-             <Grid item xs={6}>
-            <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center' }}>
-              Time Format <InfoIcon fontSize="small" sx={{ ml: 1 }} />
-            </Typography>
-            <Select
-              value={timeFormat}
-              onChange={(e) => setTimeFormat(e.target.value)}
-              fullWidth
-              size="small"
-            >
-              <MenuItem value="12h">12h (am/pm)</MenuItem>
-              <MenuItem value="24h">24h</MenuItem>
-            </Select>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center' }}>
-              Date Format <InfoIcon fontSize="small" sx={{ ml: 1 }} />
-            </Typography>
-            <Select
-              value={dateFormat}
-              onChange={(e) => setDateFormat(e.target.value)}
-              fullWidth
-              size="small"
-            >
-              <MenuItem value="MM/DD/YYYY">MM/DD/YYYY</MenuItem>
-              <MenuItem value="DD/MM/YYYY">DD/MM/YYYY</MenuItem>
-              <MenuItem value="YYYY-MM-DD">YYYY-MM-DD</MenuItem>
-            </Select>
-          </Grid> */}
             <Grid item xs={12}>
               <Button variant="text" color="info" fullWidth onClick={handleUpdate}>
-              Update Profile
-            </Button>
+                Update Profile
+              </Button>
             </Grid>
             <Grid item xs={12}>
-              {/* <Button variant="text" color="primary" fullWidth>
-              Logout
-            </Button> */}
               <Link href="/" color="error" onClick={handleLogout}>
                 Log Out
               </Link>
