@@ -14,16 +14,27 @@ import {
   Grid,
 } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import { useAuth } from '../../context/AuthContext';
 
 const AccountSettings = () => {
+  const auth = useAuth();
   const [darkMode, setDarkMode] = useState(false);
   const [timeFormat, setTimeFormat] = useState('12h');
   const [dateFormat, setDateFormat] = useState('MM/DD/YYYY');
-  const [Username, setUsername] = useState('');
-  const [Email, setEmail] = useState('');
+  const [Username, setUsername] = useState(auth.user?.username ?? "");
+  const [Email, setEmail] = useState(auth.user?.email ?? "");
 
   const handleDelete = () => {
+    // Delete the user account
+  }
 
+  const handleLogout = () => {
+    // Logout the user
+    auth.logout();
+  }
+
+  const handleUpdate = () => {
+    // Update the user account
   }
 
   return (
@@ -47,27 +58,29 @@ const AccountSettings = () => {
             </Typography>
           </Grid> */}
             <Grid item xs={12}>
-              <TextField fullWidth label="Name" defaultValue="Peter Griffin" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Username"
-                defaultValue="Peterdactyl2015"
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
+              <TextField fullWidth label="Username" value={Username} />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
                 label="Email"
-                defaultValue="hello@designdrops.io"
                 InputProps={{
                   readOnly: true,
                 }}
+                value={Email}
               />
+              {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                InputProps={{
+                  readOnly: true,
+                }}
+              >
+                {Email}
+                <TextField/>
               {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
               Email not verified. <Link href="#" color="error" sx={{ ml: 1 }}>Verify now</Link>
             </Typography> */}
@@ -113,15 +126,20 @@ const AccountSettings = () => {
             </Select>
           </Grid> */}
             <Grid item xs={12}>
+              <Button variant="text" color="info" fullWidth onClick={handleUpdate}>
+              Update Profile
+            </Button>
+            </Grid>
+            <Grid item xs={12}>
               {/* <Button variant="text" color="primary" fullWidth>
               Logout
             </Button> */}
-              <Link href="/" color="error">
+              <Link href="/" color="error" onClick={handleLogout}>
                 Log Out
               </Link>
             </Grid>
             <Grid item xs={12}>
-              <Button onClick={handleDelete}>Delete my account</Button>
+              <Button color="warning" onClick={handleDelete}>Delete my account</Button>
             </Grid>
           </Grid>
         </Paper>

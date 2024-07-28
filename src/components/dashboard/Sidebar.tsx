@@ -8,9 +8,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from "@mui/icons-material/Logout";
 import Alert from "@mui/material/Alert";
+import { useAuth } from "../context/AuthContext";
 
 
 const Sidebar: React.FC = () => {
+
+  const auth = useAuth();
+  const handleLogout = () => {  
+    auth.logout();
+  }
   
   return (
     <Box flex={1} p={2} sx={{ minWidth: "200px", maxWidth: "250px" }}>
@@ -59,7 +65,7 @@ const Sidebar: React.FC = () => {
             }}
           />
         </ListItem>
-        <ListItem component={Link} to="/">
+        <ListItem component={Link} to="/" onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>

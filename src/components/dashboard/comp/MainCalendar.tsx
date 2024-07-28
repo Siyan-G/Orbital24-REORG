@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 
 function MainCalendar() {
   return (
-    <Box sx={{ flexGrow: 1, p: 3, maxWidth:'70%'}}>
+    <Box sx={{ flexGrow: 1, p: 3, maxWidth:'80%'}}>
     <div
       className="calendar-container"
       id="calendar-container"

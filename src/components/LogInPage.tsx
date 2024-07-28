@@ -6,6 +6,7 @@ import { SERVER_URL } from '../constants';
 import { METHODS } from 'http';
 import { promises } from 'dns';
 import { Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
 
 
 const LogInPage : React.FC = () => {
@@ -17,6 +18,7 @@ const LogInPage : React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let container = document.getElementById("container");
+    const auth = useAuth();
 
     //init of Navigator used after validation of username and password
     // ==================================
@@ -104,6 +106,7 @@ const LogInPage : React.FC = () => {
 
       if (username == name && password == pass){
         console.log('Validated User & Password');
+        auth.login({username, email});
         navigate("/main");
       //==================================
       }
