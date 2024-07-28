@@ -48,11 +48,11 @@ const Topbar: React.FC<TopbarProps> = ({ pageTitle }) => {
             </LogoButton>
           </Link>
           </Box>
-          <Box>
+          {/* <Box>
           <Typography variant="h5" component="h1" fontWeight={'Medium'}>
             {pageTitle}
           </Typography>
-          </Box>
+          </Box> */}
           {/* <div style={{ width: 40 }} /> Spacer to balance the layout */}
           </Stack>
         </StyledToolbar>

@@ -6,6 +6,8 @@ import CoursePlanning from "./components/dashboard/pages/CoursePlanning";
 import UserSettings from "./components/dashboard/pages/UserSetting";
 import MainCalendar from "./components/dashboard/comp/MainCalendar";
 import Calendar from "./components/dashboard/pages/Calendar";
+import Journal from "./components/dashboard/pages/JournalPage";
+
 
 // this is where we put all our routes. DO NOT SHOVE ALL INTO ONE FILE OOP!
 // ================================
@@ -17,6 +19,7 @@ const Nav = () => {
       <Route path="/main" element={<Dashboard />} />
       <Route path="/main/calendar" element={<Calendar />} />
       <Route path="/main/courseplanning" element={<CoursePlanning />} />
+      <Route path="/main/journal" element={<Journal/>}/>
       <Route path="/main/usersettings" element={<UserSettings />} />
     </Routes>
   );

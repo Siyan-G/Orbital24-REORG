@@ -6,6 +6,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import WorkIcon from '@mui/icons-material/Work';
 import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 const Sidebar: React.FC = () => {
   return (
@@ -28,6 +29,12 @@ const Sidebar: React.FC = () => {
                 <SearchIcon />
               </ListItemIcon>
             <ListItemText primary="Modules" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
+          </ListItem>
+          <ListItem component={Link} to="/main/journal">
+              <ListItemIcon>    
+                <AutoStoriesIcon/>
+              </ListItemIcon>
+            <ListItemText primary="journal" primaryTypographyProps={{style: {fontWeight: 500, color: '#9395b2'}}}/>
           </ListItem>
           <ListItem component={Link} to="/main/usersettings">
               <ListItemIcon>    
