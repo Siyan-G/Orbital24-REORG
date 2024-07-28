@@ -14,21 +14,38 @@ import {
   Grid,
 } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import { useAuth } from '../../context/AuthContext';
 
 const AccountSettings = () => {
+  const auth = useAuth();
   const [darkMode, setDarkMode] = useState(false);
   const [timeFormat, setTimeFormat] = useState('12h');
   const [dateFormat, setDateFormat] = useState('MM/DD/YYYY');
+  const [Username, setUsername] = useState(auth.user?.username ?? "");
+  const [Email, setEmail] = useState(auth.user?.email ?? "");
+
+  const handleDelete = () => {
+    // Delete the user account
+  }
+
+  const handleLogout = () => {
+    // Logout the user
+    auth.logout();
+  }
+
+  const handleUpdate = () => {
+    // Update the user account
+  }
 
   return (
-    <Box sx={{ flexGrow: 1, p: 3, maxWidth:'40%'}} justifyContent={'center'}>
-    <Container>
-      <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
-        <Typography variant="h4" gutterBottom>
-          Account
-        </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
+    <Box sx={{ flexGrow: 1, p: 3, maxWidth: "40%" }} justifyContent={"center"}>
+      <Container>
+        <Paper elevation={3} sx={{ p: 4, mt: 4 }}>
+          <Typography variant="h4" gutterBottom>
+            Account
+          </Typography>
+          <Grid container spacing={3}>
+            {/* <Grid item xs={12}>
             <Typography variant="subtitle1">Profile picture</Typography>
             <Button variant="outlined" size="small">
               Choose file
@@ -39,26 +56,47 @@ const AccountSettings = () => {
             <Typography variant="caption" color="textSecondary">
               maximum image size is 1 MB
             </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth label="Name" defaultValue="Peter Griffin" />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth label="Username" defaultValue="Peterdactyl2015" />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth label="Email" defaultValue="hello@designdrops.io" />
-            <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+          </Grid> */}
+            <Grid item xs={12}>
+              <TextField fullWidth label="Username" value={Username} />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                InputProps={{
+                  readOnly: true,
+                }}
+                value={Email}
+              />
+              {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                InputProps={{
+                  readOnly: true,
+                }}
+              >
+                {Email}
+                <TextField/>
+              {/* <Typography variant="caption" color="error" sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
               Email not verified. <Link href="#" color="error" sx={{ ml: 1 }}>Verify now</Link>
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <FormControlLabel
-              control={<Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />}
-              label="Dark Mode"
-            />
-          </Grid>
-          <Grid item xs={6}>
+            </Typography> */}
+            </Grid>
+            {/* <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                  />
+                }
+                label="Dark Mode"
+              />
+            </Grid>
+             <Grid item xs={6}>
             <Typography variant="subtitle1" sx={{ display: 'flex', alignItems: 'center' }}>
               Time Format <InfoIcon fontSize="small" sx={{ ml: 1 }} />
             </Typography>
@@ -86,20 +124,26 @@ const AccountSettings = () => {
               <MenuItem value="DD/MM/YYYY">DD/MM/YYYY</MenuItem>
               <MenuItem value="YYYY-MM-DD">YYYY-MM-DD</MenuItem>
             </Select>
-          </Grid>
-          <Grid item xs={12}>
-            <Button variant="text" color="primary" fullWidth>
-              Logout
+          </Grid> */}
+            <Grid item xs={12}>
+              <Button variant="text" color="info" fullWidth onClick={handleUpdate}>
+              Update Profile
             </Button>
+            </Grid>
+            <Grid item xs={12}>
+              {/* <Button variant="text" color="primary" fullWidth>
+              Logout
+            </Button> */}
+              <Link href="/" color="error" onClick={handleLogout}>
+                Log Out
+              </Link>
+            </Grid>
+            <Grid item xs={12}>
+              <Button color="warning" onClick={handleDelete}>Delete my account</Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Link href="#" color="error">
-              Delete my account
-            </Link>
-          </Grid>
-        </Grid>
-      </Paper>
-    </Container>
+        </Paper>
+      </Container>
     </Box>
   );
 };

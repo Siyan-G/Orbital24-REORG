@@ -28,6 +28,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.css";
 import BlockoutEvent from "./BlockoutEvent";
+import NewEvent from "./AddEvent";
 
 const mapLines = (nthChild: string, width: number) =>
   `.rbc-day-slot .rbc-time-slot:nth-child(${nthChild}):after {width: ${width}% !important;}`;
@@ -148,6 +149,10 @@ export default function Demo() {
   const STEP = 5;
   const TIME_SLOTS = 60 / STEP;
 
+  const handleAddEvent = () => {
+      return <NewEvent />;
+    };
+
   return (
     <Flex height="100%" direction={"column"} width="100%" gap={2} p={2}>
       <Flex justifyContent={"space-between"} alignItems="center">
@@ -165,9 +170,14 @@ export default function Demo() {
               <RangeSliderTrack bg="lightgray">
                 <RangeSliderFilledTrack bg={PRIMARY_COLOR} />
               </RangeSliderTrack>
-              <RangeSliderThumb boxSize={4} index={0} bg={SECONDARY_COLOR} />
+              <RangeSliderThumb boxSize={6} index={0} bg={SECONDARY_COLOR} />
             </RangeSlider>
             <ZoomIn size={20} />
+          </Flex>
+        </Box>
+        <Box p={3} width="150px">
+          <Flex>
+            <NewEvent />
           </Flex>
         </Box>
         <Box
@@ -176,7 +186,7 @@ export default function Demo() {
               border: 2px solid ${PRIMARY_COLOR};
               border-radius: 24px;
               padding: 3px;
-              padding-left: 4px;
+              padding-left: 2px;
               width: 150px;
             }
             z-index: 4;
@@ -274,7 +284,7 @@ export default function Demo() {
                   )
                 }
               >
-                New Event
+                Add Event
               </MenuItem>
             </MenuList>
           </Menu>

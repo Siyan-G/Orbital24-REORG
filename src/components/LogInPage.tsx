@@ -6,6 +6,7 @@ import { SERVER_URL } from '../constants';
 import { METHODS } from 'http';
 import { promises } from 'dns';
 import { Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
 
 
 const LogInPage : React.FC = () => {
@@ -17,6 +18,7 @@ const LogInPage : React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     let container = document.getElementById("container");
+    const auth = useAuth();
 
     //init of Navigator used after validation of username and password
     // ==================================
@@ -104,6 +106,7 @@ const LogInPage : React.FC = () => {
 
       if (username == name && password == pass){
         console.log('Validated User & Password');
+        auth.login({username, email});
         navigate("/main");
       //==================================
       }
@@ -124,7 +127,7 @@ const LogInPage : React.FC = () => {
             <form>
               <img className="logo" src={REORGLogo} alt="REORG Icon" />
               <h1>Create Account</h1>
-              <div className="social-icons">
+              {/* <div className="social-icons">
                 <a href="#" className="icon">
                   <i className="fa-brands fa-google-plus-g"></i>
                 </a>
@@ -138,7 +141,7 @@ const LogInPage : React.FC = () => {
                   <i className="fa-brands fa-linkedin-in"></i>
                 </a>
               </div>
-              <span>or use your email for registration</span>
+              <span>or use your email for registration</span> */}
               <input
                 type="text"
                 value={username}
@@ -165,7 +168,7 @@ const LogInPage : React.FC = () => {
             <form>
               <img className="logo" src={REORGLogo} alt="REORG Icon" />
               <h1>Sign In</h1>
-              <div className="social-icons">
+              {/* <div className="social-icons">
                 <a href="#" className="icon">
                   <i className="fa-brands fa-google-plus-g"></i>
                 </a>
@@ -179,7 +182,7 @@ const LogInPage : React.FC = () => {
                   <i className="fa-brands fa-linkedin-in"></i>
                 </a>
               </div>
-              <span>or use your email and password</span>
+              <span>or use your email and password</span> */}
               <input
                 type="text"
                 value={username}
